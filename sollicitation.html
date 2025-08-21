@@ -3,28 +3,44 @@
 <head>
   <meta charset="UTF-8">
   <title>Sollicitation</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <style>
-    body { font-family: Arial, sans-serif; margin: 0; background: #f4f4f4; }
-    nav { background: #0066cc; padding: 1em; }
-    nav ul { margin: 0; padding: 0; list-style: none; display: flex; justify-content: center; gap: 2em; }
-    nav a { color: white; text-decoration: none; font-weight: bold; }
-    nav a:hover { text-decoration: underline; }
-    h1 { text-align: center; margin-top: 2em; color: #222; }
-    p { text-align: center; font-size: 1.2em; margin-top: 2em; }
-  </style>
+  <script src="https://unpkg.com/@supabase/supabase-js"></script>
 </head>
 <body>
-  <nav>
-    <ul>
-      <li><a href="index.html">Home</a></li>
-      <li><a href="documentation.html">Documentation & Ressources</a></li>
-      <li><a href="sollicitation.html">Sollicitation</a></li>
-    </ul>
-  </nav>
-
   <h1>Sollicitation</h1>
-  <p>🚧 Cette page est en construction 🚧</p>
+  <form id="sollicitation-form">
+    <label>Nom : <input type="text" id="nom" required></label><br>
+    <label>Email : <input type="email" id="email" required></label><br>
+    <label>Message : <textarea id="message" required></textarea></label><br>
+    <button type="submit">Envoyer</button>
+  </form>
+
+  <p id="resultat"></p>
+
+  <script>
+    // ⚠️ Remplace par tes infos Supabase
+    const SUPABASE_URL = "https://oqmjdgarmczlikobnysa.supabase.co";
+    const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9xbWpkZ2FybWN6bGlrb2JueXNhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTU3NzQ5ODUsImV4cCI6MjA3MTM1MDk4NX0.JspFA9QQ55ZrBN47le1DppT9VxummwSyHNmnU7jbLmA"; // anon public key
+
+    const supabase = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+    document.getElementById("sollicitation-form").addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      const nom = document.getElementById("nom").value;
+      const email = document.getElementById("email").value;
+      const message = document.getElementById("message").value;
+
+      const { data, error } = await supabase
+        .from("sollicitations")
+        .insert([{ nom, email, message }]);
+
+      if (error) {
+        document.getElementById("resultat").innerText = "❌ Erreur : " + error.message;
+      } else {
+        document.getElementById("resultat").innerText = "✅ Merci, votre sollicitation a été enregistrée.";
+        document.getElementById("sollicitation-form").reset();
+      }
+    });
+  </script>
 </body>
 </html>
-
