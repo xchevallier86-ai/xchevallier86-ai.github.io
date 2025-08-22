@@ -5,9 +5,10 @@
   <title>Sollicitation</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
+      font-family: Calibri, Arial, sans-serif; /* Police mise à jour pour correspondre aux images */
       margin: 0;
       background: #f9f9f9;
+      color: #333;
     }
     /* Barre de navigation */
     nav {
@@ -54,23 +55,57 @@
       border-radius: 10px;
       box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     }
+    /* Style des titres de section mis à jour */
+    .block h2 {
+        font-size: 1.2em;
+        font-weight: bold;
+        text-decoration: underline;
+        margin-bottom: 15px;
+        display: flex;
+        align-items: center;
+    }
+    .block h2 input {
+        margin-left: 15px;
+        width: 18px;
+        height: 18px;
+    }
     table {
       width: 100%;
       border-collapse: collapse;
       margin-top: 15px;
     }
-    table, th, td {
-      border: 1px solid #ccc;
-    }
     th, td {
+      border: 1px solid #000; /* Bordure plus marquée comme sur les images */
       padding: 8px;
-      text-align: center;
+      text-align: left; /* Alignement par défaut à gauche */
+      vertical-align: middle;
     }
     th {
       background: #f2f2f2;
+      font-weight: normal;
+    }
+    .centered {
+        text-align: center;
+    }
+    /* Nouveaux styles pour les sections de tableau */
+    .section-title {
+        font-weight: bold;
+        text-align: center;
+        background-color: #E0E0E0;
+    }
+    .facultatif-body {
+        background-color: #F0F8FF;
+    }
+    .fondamentaux-row {
+        background-color: #DDEBF7;
     }
     input[type="text"] {
       width: 95%;
+      padding: 4px;
+    }
+    input[type="checkbox"] {
+        width: 16px;
+        height: 16px;
     }
     .btn-submit {
       display: block;
@@ -86,9 +121,6 @@
     .btn-submit:hover {
       background: #0056b3;
     }
-    /* Largeurs spécifiques */
-    td:nth-child(1), th:nth-child(1) { width: 90px; } /* Date */
-    td:nth-child(2), th:nth-child(2) { width: 80px; } /* Séquence */
   </style>
 </head>
 <body>
@@ -103,7 +135,6 @@
   <h1>Sollicitations</h1>
   <div class="subtitle">FI APM XX</div>
 
-  <!-- Infos utilisateur -->
   <div class="form-info">
     <div>
       <label for="nom">Nom : </label>
@@ -116,172 +147,215 @@
   </div>
 
 <div class="block">
-  <h2>Référent Professionnel</h2>
-  <table>
-    <tr>
-      <th>Date</th>
-      <th>Séquence</th>
-      <th>Intitulé</th>
-      <th>Durée</th>
-      <th>Disponibilité</th>
-      <th>Commentaire</th>
-    </tr>
-    <tr>
-      <td>2025-08-21</td>
-      <td>RP1</td>
-      <td>Accompagnement terrain</td>
-      <td>2h</td>
-      <td><input type="checkbox"></td>
-      <td><input type="text" placeholder="Votre commentaire"></td>
-    </tr>
-    <tr>
-      <td>2025-08-22</td>
-      <td>RP2</td>
-      <td>Observation</td>
-      <td>1h</td>
-      <td><input type="checkbox"></td>
-      <td><input type="text"></td>
-    </tr>
-  </table>
+    <h2>Référent Professionnel <input type="checkbox"></h2>
+    <table>
+        <thead>
+            <tr>
+                <td colspan="6" class="section-title">Obligatoire</td>
+            </tr>
+            <tr>
+                <th style="width:10%;">Date</th>
+                <th style="width:10%;">Séquence</th>
+                <th>Intitulé ( Horaires )</th>
+                <th style="width:10%;" class="centered">Durée</th>
+                <th style="width:10%;" class="centered">Disponibilité</th>
+                <th style="width:15%;">Commentaire</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><input type="text" placeholder="Date..."></td>
+                <td>F0</td>
+                <td>Ouverture de la promotion</td>
+                <td class="centered">1</td>
+                <td class="centered"><input type="checkbox"></td>
+                <td><input type="text"></td>
+            </tr>
+            <tr>
+                <td><input type="text" placeholder="Date..."></td>
+                <td>F1.1</td>
+                <td>Représentation du métier d'APM</td>
+                <td class="centered">1</td>
+                <td class="centered"><input type="checkbox"></td>
+                <td><input type="text"></td>
+            </tr>
+            <tr>
+                <td><input type="text" placeholder="Date..."></td>
+                <td>F1.2</td>
+                <td>Déontologie</td>
+                <td class="centered">1</td>
+                <td class="centered"><input type="checkbox"></td>
+                <td><input type="text"></td>
+            </tr>
+             <tr>
+                <td rowspan="3"><input type="text" placeholder="Date..."></td>
+                <td rowspan="3">Mises en Situation</td>
+                <td>MSP S1</td>
+                <td rowspan="3"></td>
+                <td rowspan="3" class="centered"><input type="checkbox"></td>
+                <td rowspan="3"><input type="text"></td>
+            </tr>
+            <tr>
+                <td>MSP S3</td>
+            </tr>
+            <tr>
+                <td>MSP Intermédiaires et Finales</td>
+            </tr>
+        </tbody>
+        <thead>
+            <tr>
+                <td colspan="6" class="section-title">Facultatif</td>
+            </tr>
+        </thead>
+        <tbody class="facultatif-body">
+            <tr>
+                <td><input type="text" placeholder="Date..."></td>
+                <td>S1.1</td>
+                <td>Renseigner sur la VP et au Poste</td>
+                <td class="centered">2</td>
+                <td class="centered"><input type="checkbox"></td>
+                <td><input type="text"></td>
+            </tr>
+            <tr>
+                <td><input type="text" placeholder="Date..."></td>
+                <td>S1.2</td>
+                <td>Communication avec public spécifique</td>
+                <td class="centered">2</td>
+                <td class="centered"><input type="checkbox"></td>
+                <td><input type="text"></td>
+            </tr>
+            <tr>
+                <td><input type="text" placeholder="Date..."></td>
+                <td>S1.3</td>
+                <td>Assister une personne en difficulté</td>
+                <td class="centered">3</td>
+                <td class="centered"><input type="checkbox"></td>
+                <td><input type="text"></td>
+            </tr>
+            <tr>
+                <td><input type="text" placeholder="Date..."></td>
+                <td>S1.4</td>
+                <td>Gérer une situation conflictuelle</td>
+                <td class="centered">2</td>
+                <td class="centered"><input type="checkbox"></td>
+                <td><input type="text"></td>
+            </tr>
+        </tbody>
+    </table>
 </div>
 
 <div class="block">
-  <h2>Référent Relationnel</h2>
-  <table>
-    <tr>
-      <th>Date</th>
-      <th>Séquence</th>
-      <th>Intitulé</th>
-      <th>Durée</th>
-      <th>Disponibilité</th>
-      <th>Commentaire</th>
-    </tr>
-    <tr>
-      <td>2025-08-23</td>
-      <td>RR1</td>
-      <td>Communication</td>
-      <td>1h30</td>
-      <td><input type="checkbox"></td>
-      <td><input type="text"></td>
-    </tr>
-  </table>
+    <h2>Référent Relationnel <input type="checkbox"></h2>
+    <table>
+        <thead>
+            <tr>
+                <td colspan="6" class="section-title">Obligatoire</td>
+            </tr>
+            <tr>
+                <th style="width:10%;">Date</th>
+                <th style="width:10%;">Séquence</th>
+                <th>Intitulé</th>
+                <th style="width:10%;" class="centered">Durée</th>
+                <th style="width:10%;" class="centered">Disponibilité</th>
+                <th style="width:15%;">Commentaire</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><input type="text" placeholder="Date..."></td>
+                <td>F1.3</td>
+                <td>Communication</td>
+                <td class="centered">1</td>
+                <td class="centered"><input type="checkbox"></td>
+                <td><input type="text"></td>
+            </tr>
+            <tr>
+                <td><input type="text" placeholder="Date..."></td>
+                <td>F1.4</td>
+                <td>Gestion des émotions</td>
+                <td class="centered">1</td>
+                <td class="centered"><input type="checkbox"></td>
+                <td><input type="text"></td>
+            </tr>
+            <tr>
+                <td><input type="text" placeholder="Date..."></td>
+                <td>S1.2</td>
+                <td>Communication avec public spécifique (binôme PM)</td>
+                <td class="centered">2</td>
+                <td class="centered"><input type="checkbox"></td>
+                <td><input type="text"></td>
+            </tr>
+            <tr>
+                <td><input type="text" placeholder="Date..."></td>
+                <td>S1.3</td>
+                <td>Assister une personne en difficulté (binôme PM)</td>
+                <td class="centered">3</td>
+                <td class="centered"><input type="checkbox"></td>
+                <td><input type="text"></td>
+            </tr>
+            <tr>
+                <td rowspan="3"><input type="text" placeholder="Date..."></td>
+                <td rowspan="3">Mises en Situation</td>
+                <td>MSP S1 (9h - 17h)</td>
+                <td rowspan="3" class="centered">4</td>
+                <td rowspan="3" class="centered"><input type="checkbox"></td>
+                <td rowspan="3"><input type="text"></td>
+            </tr>
+            <tr>
+                <td>MSP S3 ( 9h - 17h + 8h30 - 12h)</td>
+            </tr>
+            <tr>
+                <td>MSP Intermédiaires (9h - 17h) et Finales (13h - 18h + 9h - 17h)</td>
+            </tr>
+        </tbody>
+        <thead>
+            <tr>
+                <td colspan="6" class="section-title">Facultatif (en binôme avec un PM)</td>
+            </tr>
+        </thead>
+        <tbody class="facultatif-body">
+            <tr>
+                <td><input type="text" placeholder="Date..."></td>
+                <td>S1.1</td>
+                <td>Renseigner sur la VP et au Poste</td>
+                <td class="centered">2</td>
+                <td class="centered"><input type="checkbox"></td>
+                <td><input type="text"></td>
+            </tr>
+            <tr>
+                <td><input type="text" placeholder="Date..."></td>
+                <td>S1.4</td>
+                <td>Gérer une situation conflictuelle</td>
+                <td class="centered">2</td>
+                <td class="centered"><input type="checkbox"></td>
+                <td><input type="text"></td>
+            </tr>
+        </tbody>
+    </table>
 </div>
+
 
 <div class="block">
-  <h2>Référent Technique</h2>
-  <table>
-    <tr>
-      <th>Date</th>
-      <th>Séquence</th>
-      <th>Intitulé</th>
-      <th>Durée</th>
-      <th>Disponibilité</th>
-      <th>Commentaire</th>
-    </tr>
-    <tr>
-      <td>2025-08-24</td>
-      <td>RT1</td>
-      <td>Prise en main matériel</td>
-      <td>2h</td>
-      <td><input type="checkbox"></td>
-      <td><input type="text"></td>
-    </tr>
-  </table>
-</div>
-
-<div class="block">
-  <h2>Fondamentaux</h2>
-  <table>
-    <tr>
-      <th>Date</th>
-      <th>Séquence</th>
-      <th>Intitulé</th>
-      <th>Durée</th>
-      <th>Disponibilité</th>
-      <th>Commentaire</th>
-    </tr>
-    <tr>
-      <td>2025-08-25</td>
-      <td>F1</td>
-      <td>Déontologie</td>
-      <td>2h</td>
-      <td><input type="checkbox"></td>
-      <td><input type="text"></td>
-    </tr>
-  </table>
-</div>
-
-<div class="block">
-  <h2>Situations</h2>
-  <table>
-    <tr>
-      <th>Date</th>
-      <th>Séquence</th>
-      <th>Intitulé</th>
-      <th>Durée</th>
-      <th>Disponibilité</th>
-      <th>Commentaire</th>
-    </tr>
-    <tr>
-      <td>2025-08-26</td>
-      <td>S1</td>
-      <td>Gestion de crise</td>
-      <td>3h</td>
-      <td><input type="checkbox"></td>
-      <td><input type="text"></td>
-    </tr>
-  </table>
-</div>
-
-<button class="btn-submit" onclick="submitForm()">Envoyer</button>
-
-</div>
-
-<script>
-  async function submitForm() {
-    const nom = document.getElementById("nom").value;
-    const prenom = document.getElementById("prenom").value;
-
-    const data = {
-      nom,
-      prenom,
-      sollicitations: []
-    };
-
-    document.querySelectorAll("table").forEach(table => {
-      table.querySelectorAll("tr").forEach((row, i) => {
-        if (i === 0) return; // skip header
-        const cells = row.querySelectorAll("td");
-        if (cells.length > 0) {
-          data.sollicitations.push({
-            date: cells[0].innerText,
-            sequence: cells[1].innerText,
-            intitule: cells[2].innerText,
-            duree: cells[3].innerText,
-            dispo: cells[4].querySelector("input").checked,
-            commentaire: cells[5].querySelector("input").value
-          });
-        }
-      });
-    });
-
-    console.log("Données collectées :", data);
-
-    // Ici tu enverras vers Supabase avec un fetch POST
-    // Exemple (remplacer URL et clé par les tiennes) :
-    /*
-    const response = await fetch("https://YOUR-PROJECT.supabase.co/rest/v1/sollicitations", {
-      method: "POST",
-      headers: {
-        "apikey": "YOUR_API_KEY",
-        "Authorization": "Bearer YOUR_API_KEY",
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify(data)
-    });
-    */
-  }
-</script>
-
-</body>
-</html>
+    <h2>Référent Technique <input type="checkbox"></h2>
+    <table>
+        <thead>
+            <tr>
+                <td colspan="6" class="section-title">Obligatoire</td>
+            </tr>
+            <tr>
+                <th style="width:10%;">Date</th>
+                <th style="width:10%;">Séquence</th>
+                <th>Intitulé</th>
+                <th style="width:10%;" class="centered">Durée</th>
+                <th style="width:10%;" class="centered">Disponibilité</th>
+                <th style="width:15%;">Commentaire</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><input type="text" placeholder="Date..."></td>
+                <td>F4.3</td>
+                <td>GTPI</td>
+                <td></td>
+                <td class="centered"><input type="checkbox"></td>
+                <td><input
