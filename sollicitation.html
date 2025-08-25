@@ -658,3 +658,87 @@
         </tbody>
     </table>
 </div>
+<button class="btn-submit" id="submitBtn">Enregistrer</button>
+
+<script>
+  const EDGE_FUNCTION_URL = "https://<ton-projet>.functions.supabase.co/sollicitations"; 
+  // remplace <ton-projet> par ton id Supabase
+
+  document.getElementById("submitBtn").addEventListener("click", async () => {
+    const nom = document.getElementById("nom").value.trim();
+    const prenom = document.getElementById("prenom").value.trim();
+    const fi = document.querySelector(".subtitle").innerText.trim(); // FI affiché en haut de la page
+
+    if (!nom || !prenom || !fi) {
+      alert("Merci de renseigner le nom, le prénom et la FI");
+      return;
+    }
+
+    // Récupérer toutes les lignes de tableaux
+    const rows = document.querySelectorAll("table tbody tr");
+
+    // Construire les objets à envoyer
+    let allData = [];
+    rows.forEach(row => {
+      const cells = row.querySelectorAll("td");
+
+      if (cells.length >= 6) {
+        const date = cells[0].querySelector("input")?.value || null;
+        const sequence = cells[1]?.innerText || cells[1]?.querySelector("input")?.value || null;
+        const intitule = cells[2]?.innerText || cells[2]?.querySelector("input")?.value || null;
+        const duree = cells[3]?.innerText || cells[3]?.querySelector("input")?.value || null;
+        const dispo = cells[4].querySelector("input[type=checkbox]")?.checked || false; // Toujours un booléen
+        const com = cells[5].querySelector("input")?.value || null;
+
+        // Ne rien enregistrer si ligne complètement vide
+        if (date || intitule || com || dispo) {
+          allData.push({
+            fi,
+            nom,
+            prenom,
+            date,
+            sequence,
+            intitule,
+            duree,
+            dispo,
+            com
+          });
+        }
+      }
+    });
+
+    if (allData.length === 0) {
+      alert("Aucune donnée à enregistrer");
+      return;
+    }
+
+    // Envoi à la fonction edge
+    let force = false;
+    let response = await fetch(EDGE_FUNCTION_URL, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ ...allData[0], force }) // on envoie la première pour vérifier doublon
+    });
+    let result = await response.json();
+
+    if (result.duplicate) {
+      if (confirm(result.message)) {
+        force = true;
+      } else {
+        return;
+      }
+    }
+
+    // Envoi de toutes les lignes (avec force si nécessaire)
+    for (let rowData of allData) {
+      await fetch(EDGE_FUNCTION_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ ...rowData, force })
+      });
+    }
+
+    alert("Vos choix ont été enregistrés !");
+  });
+</script>
+</body>
