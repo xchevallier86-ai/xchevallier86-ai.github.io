@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Sollicitation</title>
+  <style>
+    body {
+      font-family: Calibri, Arial, sans-serif; /* Police mise à jour pour correspondre aux images */
+      margin: 0;
+      background: #f9f9f9;
+      color: #333;
+    }
+    /* Barre de navigation */
+    nav {
+      background: #007BFF;
+      padding: 12px 20px;
+      color: white;
+      font-weight: bold;
+      font-size: 18px;
+    }
+    nav a {
+      color: white;
+      margin-right: 20px;
+      text-decoration: none;
+    }
+    nav a:hover {
+      text-decoration: underline;
+    }
+    .container {
+      padding: 20px;
+    }
+    h1 {
+      text-align: center;
+      margin-bottom: 5px;
+    }
+    .subtitle {
+      text-align: center;
+      font-size: 22px;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+    .form-info {
+      margin: 20px auto;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+    }
+    .form-info label {
+      font-weight: bold;
+    }
+    .block {
+      margin: 30px 0;
+      padding: 20px;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    /* Style des titres de section mis à jour */
+    .block h2 {
+        font-size: 1.2em;
+        font-weight: bold;
+        text-decoration: underline;
+        margin-bottom: 15px;
+        display: flex;
+        align-items: center;
+    }
+    .block h2 input {
+        margin-left: 15px;
+        width: 18px;
+        height: 18px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 15px;
+    }
+    th, td {
+      border: 1px solid #000; /* Bordure plus marquée comme sur les images */
+      padding: 8px;
+      text-align: left; /* Alignement par défaut à gauche */
+      vertical-align: middle;
+    }
+    th {
+      background: #f2f2f2;
+      font-weight: normal;
+    }
+    .centered {
+        text-align: center;
+    }
+    /* Nouveaux styles pour les sections de tableau */
+    .section-title {
+        font-weight: bold;
+        text-align: center;
+        background-color: #E0E0E0;
+    }
+    .facultatif-body {
+        background-color: #F0F8FF;
+    }
+    .fondamentaux-row {
+        background-color: #DDEBF7;
+    }
+    input[type="text"] {
+      width: 95%;
+      padding: 4px;
+    }
+    input[type="checkbox"] {
+        width: 16px;
+        height: 16px;
+    }
+    .btn-submit {
+      display: block;
+      margin: 30px auto;
+      padding: 12px 20px;
+      font-size: 16px;
+      background: #007BFF;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .btn-submit:hover {
+      background: #0056b3;
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html">Accueil</a>
+  <a href="sollicitation.html">Sollicitations</a>
+  <a href="documentation.html">Documentation & Ressources</a>
+</nav>
+
+<div class="container">
+  <h1>Sollicitations</h1>
+  <div class="subtitle">FI APM <input tpye="text"></div>
+
+  <div class="form-info">
+    <div>
+      <label for="nom">Nom : </label>
+      <input type="text" id="nom" name="nom">
+    </div>
+    <div>
+      <label for="prenom">Prénom : </label>
+      <input type="text" id="prenom" name="prenom">
+    </div>
+  </div>
+
+<div class="block">
+    <h2>Référent Professionnel <input type="checkbox"></h2>
+    <table>
+        <thead>
+            <tr>
+                <td colspan="6" class="section-title">Obligatoire</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><input type="text" placeholder="Date..."></td>
+                <td>F0</td>
+                <td>Ouverture de la promotion</td>
+                <td class="centered">1</td>
+                <td class="centered"><input type="checkbox"></td>
+                <td><input type="text"></td>
+            </tr>
+            <tr>
+                <td><input type="text" placeholder="Date..."></td>
+                <td>F1.1</td>
+                <td>Représentation du métier d'APM</td>
+                <td class="centered">1</td>
+                <td class="centered"><input type="checkbox"></td>
+                <td><input type="text"></td>
+            </tr>
+            <tr>
+                <td><input type="text" placeholder="Date..."></td>
+                <td>F1.2</td>
+                <td>Déontologie</td>
+                <td class="centered">1</td>
+                <td class="centered"><input type="checkbox"></td>
+                <td><input type="text"></td>
+            </tr>
+             <tr>
+                <td><input type="text" placeholder="Date..."></td>
+                <td>Eval</td>
+                <td>MSP S1</td>
+                <td class="centered">1</td>
+                <td class="centered"><input type="checkbox"></td>
+                <td><input type="text"></td>
+            </tr>
+            <tr>
+                <td><input type="text" placeholder="Date..."></td>
+                <td>Eval</td>
+                <td>MSP S3</td>
+                <td class="centered">1</td>
+                <td class="centered"><input type="checkbox"></td>
+                <td><input type="text"></td>
+            </tr>
+            <tr>
+                <td><input type="text" placeholder="Date..."></td>
+                <td>Eval</td>
+                <td>MSP Intermediaires</td>
+                <td class="centered">1</td>
+                <td class="centered"><input type="checkbox"></td>
+                <td><input type="text"></td>
+            </tr>
+            <tr>
+                <td><input type="text" placeholder="Date..."></td>
+                <td>Eval</td>
+                <td>MSP Finales</td>
+                <td class="centered">1</td>
+                <td class="centered"><input type="checkbox"></td>
+                <td><input type="text"></td>
+            </tr>
+        </tbody>
+        <thead>
+            <tr>
+                <td colspan="6" class="section-title">Facultatif</td>
+            </tr>
+        </thead>
+        <tbody class="facultatif-body">
+            <tr>
+                <td><input type="text" placeholder="Date..."></td>
+                <td>S1.1</td>
+                <td>Renseigner sur la VP et au Poste</td>
+                <td class="centered">2</td>
+                <td class="centered"><input type="checkbox"></td>
+                <td><input type="text"></td>
+            </tr>
+            <tr>
+                <td><input type="text" placeholder="Date..."></td>
+                <td>S1.2</td>
+                <td>Communication avec public spécifique</td>
+                <td class="centered">2</td>
+                <td class="centered"><input type="checkbox"></td>
+                <td><input type="text"></td>
+            </tr>
+            <tr>
+                <td><input type="text" placeholder="Date..."></td>
+                <td>S1.3</td>
+                <td>Assister une personne en difficulté</td>
+                <td class="centered">3</td>
+                <td class="centered"><input type="checkbox"></td>
+                <td><input type="text"></td>
+            </tr>
+            <tr>
+                <td><input type="text" placeholder="Date..."></td>
+                <td>S1.4</td>
+                <td>Gérer une situation conflictuelle</td>
+                <td class="centered">2</td>
+                <td class="centered"><input type="checkbox"></td>
+                <td><input type="text"></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="block">
+    <h2>Référent Relationnel <input type="checkbox"></h2>
+    <table>
+        <thead>
+            <tr>
+                <td colspan="6" class="section-title">Obligatoire</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><input type="text" placeholder="Date..."></td>
+                <td>F1.3</td>
+                <td>Communication</td>
+                <td class="centered">1</td>
+                <td class="centered"><input type="checkbox"></td>
+                <td><input type="text"></td>
+            </tr>
+            <tr>
+                <td><input type="text" placeholder="Date..."></td>
+                <td>F1.4</td>
+                <td>Gestion des émotions</td>
+                <td class="centered">1</td>
+                <td class="centered"><input type="checkbox"></td>
+                <td><input type="text"></td>
+            </tr>
+            <tr>
+                <td><input type="text" placeholder="Date..."></td>
+                <td>S1.2</td>
+                <td>Communication avec public spécifique (binôme PM)</td>
+                <td class="centered">2</td>
+                <td class="centered"><input type="checkbox"></td>
+                <td><input type="text"></td>
+            </tr>
+            <tr>
+                <td><input type="text" placeholder="Date..."></td>
+                <td>S1.3</td>
+                <td>Assister une personne en difficulté (binôme PM)</td>
+                <td class="centered">3</td>
+                <td class="centered"><input type="checkbox"></td>
+                <td><input type="text"></td>
+             <tr>
+                <td><input type="text" placeholder="Date..."></td>
+                <td>Eval</td>
+                <td>MSP S1</td>
+                <td class="centered">1</td>
+                <td class="centered"><input type="checkbox"></td>
+                <td><input type="text"></td>
+            </tr>
+            <tr>
+                <td><input type="text" placeholder="Date..."></td>
+                <td>Eval</td>
+                <td>MSP S3</td>
+                <td class="centered">1</td>
+                <td class="centered"><input type="checkbox"></td>
+                <td><input type="text"></td>
+            </tr>
+            <tr>
+                <td><input type="text" placeholder="Date..."></td>
+                <td>Eval</td>
+                <td>MSP Intermediaires</td>
+                <td class="centered">1</td>
+                <td class="centered"><input type="checkbox"></td>
+                <td><input type="text"></td>
+            </tr>
+            <tr>
+                <td><input type="text" placeholder="Date..."></td>
+                <td>Eval</td>
+                <td>MSP Finales</td>
+                <td class="centered">1</td>
+                <td class="centered"><input type="checkbox"></td>
+                <td><input type="text"></td>
+            </tr>
+        </tbody>
+        <thead>
+            <tr>
+                <td colspan="6" class="section-title">Facultatif (en binôme avec un PM)</td>
+            </tr>
+        </thead>
+        <tbody class="facultatif-body">
+            <tr>
+                <td><input type="text" placeholder="Date..."></td>
+                <td>S1.1</td>
+                <td>Renseigner sur la VP et au Poste</td>
+                <td class="centered">2</td>
+                <td class="centered"><input type="checkbox"></td>
+                <td><input type="text"></td>
+            </tr>
+            <tr>
+                <td><input type="text" placeholder="Date..."></td>
+                <td>S1.4</td>
+                <td>Gérer une situation conflictuelle</td>
+                <td class="centered">2</td>
+                <td class="centered"><input type="checkbox"></td>
+                <td><input type="text"></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+
+<div class="block">
+    <h2>Référent Technique <input type="checkbox"></h2>
+    <table>
+        <thead>
+            <tr>
+                <td colspan="6" class="section-title">Obligatoire</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><input type="text" placeholder="Date..."></td>
+                <td>F4.3</td>
+                <td>GTPI</td>
+                <td class="centered">1</td>
+                <td class="centered"><input type="checkbox"></td>
+                <td><input type="text"></td>
+            </tr>
+            <tr>
+                <td><input type="text" placeholder="Date..."></td>
+                <td>Eval</td>
+                <td>MSP S3</td>
+                <td class="centered">1</td>
+                <td class="centered"><input type="checkbox"></td>
+                <td><input type="text"></td>
+            </tr>
+            <tr>
+                <td><input type="text" placeholder="Date..."></td>
+                <td>Eval</td>
+                <td>MSP Intermediaires</td>
+                <td class="centered">1</td>
+                <td class="centered"><input type="checkbox"></td>
+                <td><input type="text"></td>
+            </tr>
+            <tr>
+                <td><input type="text" placeholder="Date..."></td>
+                <td>Eval</td>
+                <td>MSP Finales</td>
+                <td class="centered">1</td>
+                <td class="centered"><input type="checkbox"></td>
+                <td><input type="text"></td>
+            </tr>
+        </tbody>
+        <thead>
+            <tr>
+                <td colspan="6" class="section-title">Facultatif</td>
+            </tr>
+        </thead>
+        <tbody class="facultatif-body">
+            <tr>
+                <td><input type="text" placeholder="Date..."></td>
+                <td>F4.1</td>
+                <td>Sport</td>
+                <td class="centered">2</td>
+                <td class="centered"><input type="checkbox"></td>
+                <td><input type="text"></td>
+            </tr>
+            <tr>
+                <td><input type="text" placeholder="Date..."></td>
+                <td>F4.2</td>
+                <td>Moyen de Transmission</td>
+                <td class="centered">2</td>
+                <td class="centered"><input type="checkbox"></td>
+                <td><input type="text"></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="block">
+    <h2>Fondamentaux</h2>
+    <table>
+        <tbody>
+            <tr>
+                <td><input type="text" placeholder="Date..."></td>
+                <td>F2.1</td>
+                <td>GTPI</td>
+                <td class="centered">1</td>
+                <td class="centered"><input type="checkbox"></td>
+                <td><input type="text"></td>
+            </tr>
+            <tr>
+                <td><input type="text" placeholder="Date..."></td>
+                <td>F2.2</td>
+                <td>Organisation administrative et juridictionnellle française</td>
+                <td class="centered">1</td>
+                <td class="centered"><input type="checkbox"></td>
+                <td><input type="text"></td>
+            </tr>
+            <tr>
+                <td><input type="text" placeholder="Date..."></td>
+                <td>F2.3</td>
+                <td>Statut du PM</td>
+                <td class="centered">1</td>
+                <td class="centered"><input type="checkbox"></td>
+                <td><input type="text"></td>
+            </tr>
+            <tr>
+                <td><input type="text" placeholder="Date..."></td>
+                <td>F3.1</td>
+                <td>Les textes régissant les prérogatives du PM</td>
+                <td class="centered">1</td>
+                <td class="centered"><input type="checkbox"></td>
+                <td><input type="text"></td>
+            </tr>
+            <tr>
+                <td><input type="text" placeholder="Date..."></td>
+                <td>F3.2</td>
+                <td>Droit Pénal et Code de Procédure Pénale</td>
+                <td class="centered">1</td>
+                <td class="centered"><input type="checkbox"></td>
+                <td><input type="text"></td>
+            </tr>
+            <tr>
+                <td><input type="text" placeholder="Date..."></td>
+                <td>F3.3</td>
+                <td>Les écrits Professionnel</td>
+                <td class="centered">1</td>
+                <td class="centered"><input type="checkbox"></td>
+                <td><input type="text"></td>
+            </tr>
+            <tr>
+                <td><input type="text" placeholder="Date..."></td>
+                <td>F3.4</td>
+                <td>Les infractions liées au bruit de voisinage</td>
+                <td class="centered">1</td>
+                <td class="centered"><input type="checkbox"></td>
+                <td><input type="text"></td>
+            </tr>
+            <tr>
+                <td><input type="text" placeholder="Date..."></td>
+                <td>F3.5</td>
+                <td>Module juridique préalable à l'armement</td>
+                <td class="centered">1</td>
+                <td class="centered"><input type="checkbox"></td>
+                <td><input type="text"></td>
+            </tr>
+            <tr>
+                <td><input type="text" placeholder="Date..."></td>
+                <td>F4.1</td>
+                <td>Sport</td>
+                <td class="centered">1</td>
+                <td class="centered"><input type="checkbox"></td>
+                <td><input type="text"></td>
+            </tr>
+            <tr>
+                <td><input type="text" placeholder="Date..."></td>
+                <td>F4.2</td>
+                <td>Les moyens de transmission</td>
+                <td class="centered">1</td>
+                <td class="centered"><input type="checkbox"></td>
+                <td><input type="text"></td>
+            </tr>
+            <tr>
+                <td><input type="text" placeholder="Date..."></td>
+                <td>F4.4</td>
+                <td>SST</td>
+                <td class="centered">1</td>
+                <td class="centered"><input type="checkbox"></td>
+                <td><input type="text"></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="block">
+    <h2>Situations</h2>
+    <table>
+        <tbody>
+            <tr>
+                <td><input type="text" placeholder="Date..."></td>
+                <td>S1.1</td>
+                <td>Accueillir et renseigner au poste et sur la VP</td>
+                <td class="centered">2</td>
+                <td class="centered"><input type="checkbox"></td>
+                <td><input type="text"></td>
+            </tr>
+            <tr>
+                <td><input type="text" placeholder="Date..."></td>
+                <td>S2.2</td>
+                <td>Communication avec les publics spécifiques</td>
+                <td class="centered">1</td>
+                <td class="centered"><input type="checkbox"></td>
+                <td><input type="text"></td>
+            </tr>
+            <tr>
+                <td><input type="text" placeholder="Date..."></td>
+                <td>S2.3</td>
+                <td>Assister une personne en difficulté</td>
+                <td class="centered">1</td>
+                <td class="centered"><input type="checkbox"></td>
+                <td><input type="text"></td>
+            </tr>
+            <tr>
+                <td><input type="text" placeholder="Date..."></td>
+                <td>S1.4</td>
+                <td>Intervenir sur une situation conflictuelle</td>
+                <td class="centered">1</td>
+                <td class="centered"><input type="checkbox"></td>
+                <td><input type="text"></td>
+            </tr>
+            <tr>
+                <td><input type="text" placeholder="Date..."></td>
+                <td>S1.5</td>
+                <td>Intervenir en situation de crise ou d'urgence</td>
+                <td class="centered">1</td>
+                <td class="centered"><input type="checkbox"></td>
+                <td><input type="text"></td>
+            </tr>
+            <tr>
+                <td><input type="text" placeholder="Date..."></td>
+                <td>S2.1</td>
+                <td>Les règles de fonctionnement d'un poste de police</td>
+                <td class="centered">1</td>
+                <td class="centered"><input type="checkbox"></td>
+                <td><input type="text"></td>
+            </tr>
+            <tr>
+                <td><input type="text" placeholder="Date..."></td>
+                <td>S2.2</td>
+                <td>Maintenir en état les moyens individuels et collectifs</td>
+                <td class="centered">1</td>
+                <td class="centered"><input type="checkbox"></td>
+                <td><input type="text"></td>
+            </tr>
+            <tr>
+                <td><input type="text" placeholder="Date..."></td>
+                <td>S2.3</td>
+                <td>Maintenir ses compétences professionnelles</td>
+                <td class="centered">1</td>
+                <td class="centered"><input type="checkbox"></td>
+                <td><input type="text"></td>
+            </tr>
+            <tr>
+                <td><input type="text" placeholder="Date..."></td>
+                <td>S3.1</td>
+                <td>Initier une procédure judiciaire</td>
+                <td class="centered">1</td>
+                <td class="centered"><input type="checkbox"></td>
+                <td><input type="text"></td>
+            </tr>
+            <tr>
+                <td><input type="text" placeholder="Date..."></td>
+                <td>S3.2</td>
+                <td>La réglementation relative au Code de la Route</td>
+                <td class="centered">1</td>
+                <td class="centered"><input type="checkbox"></td>
+                <td><input type="text"></td>
+            </tr>
+            <tr>
+                <td><input type="text" placeholder="Date..."></td>
+                <td>S3.3.1</td>
+                <td>Les pouvoirs de police du maire</td>
+                <td class="centered">2</td>
+                <td class="centered"><input type="checkbox"></td>
+                <td><input type="text"></td>
+            </tr>
+            <tr>
+                <td><input type="text" placeholder="Date..."></td>
+                <td>S3.3.2</td>
+                <td>Occupation du domaine public</td>
+                <td class="centered">2</td>
+                <td class="centered"><input type="checkbox"></td>
+                <td><input type="text"></td>
+            </tr>
+            <tr>
+                <td><input type="text" placeholder="Date..."></td>
+                <td>S3.3.3</td>
+                <td>Urbanisme et Publicité</td>
+                <td class="centered">1</td>
+                <td class="centered"><input type="checkbox"></td>
+                <td><input type="text"></td>
+            </tr>
+            <tr>
+                <td><input type="text" placeholder="Date..."></td>
+                <td>S3.3.4</td>
+                <td>Environnement</td>
+                <td class="centered">1</td>
+                <td class="centered"><input type="checkbox"></td>
+                <td><input type="text"></td>
+            </tr>
+            <tr>
+                <td><input type="text" placeholder="Date..."></td>
+                <td>S3.3.5</td>
+                <td>Réglementation Animale</td>
+                <td class="centered">1</td>
+                <td class="centered"><input type="checkbox"></td>
+                <td><input type="text"></td>
+            </tr>
+            <tr>
+                <td><input type="text" placeholder="Date..."></td>
+                <td>S3.3.1</td>
+                <td>Funéraire</td>
+                <td class="centered">0,5</td>
+                <td class="centered"><input type="checkbox"></td>
+                <td><input type="text"></td>
+            </tr>
+            <tr>
+                <td><input type="text" placeholder="Date..."></td>
+                <td>S4.1</td>
+                <td>Prévention et surveillance du domaine public</td>
+                <td class="centered">3</td>
+                <td class="centered"><input type="checkbox"></td>
+                <td><input type="text"></td>
+            </tr>
+            <tr>
+                <td><input type="text" placeholder="Date..."></td>
+                <td>S4.2</td>
+                <td>Participer et assurer le bon déroulement des cérémonies et manifestations</td>
+                <td class="centered">2</td>
+                <td class="centered"><input type="checkbox"></td>
+                <td><input type="text"></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
