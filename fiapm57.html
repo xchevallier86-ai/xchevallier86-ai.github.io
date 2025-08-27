@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -127,14 +128,15 @@
 
 <nav>
   <a href="index.html">Accueil</a>
-  <a href="sollicitation.html">Sollicitations</a>
+  <a href="listsol.html">Sollicitations</a>
   <a href="documentation.html">Documentation & Ressources</a>
 </nav>
 
 <div class="container">
   <h1>Sollicitations</h1>
-  <div class="subtitle">FI APM XX</div>
-
+  <h1>FI APM 57</h1>
+  </div>
+    
   <div class="form-info">
     <div>
       <label for="nom">Nom : </label>
@@ -145,7 +147,13 @@
       <input type="text" id="prenom" name="prenom">
     </div>
   </div>
-
+<div class="block">
+    <h1>⚠️ Important ⚠️</h1>
+   <label>Il est nécessaire d’être disponible à toutes les dates obligatoires pour être référent professionnel ou relationnel. Concernant les référents techniques, si une ou deux dates posent problème pour votre positionnement, vous pouvez indiquer que vous êtes disponible et préciser, dans la partie « Commentaire », les dates auxquelles vous êtes indisponible. Cela nous permettra d’envisager un remplacement<br>
+    <br>
+    Par défaut, les temps en distanciel sont programmés sur des séquences d’une demi‑journée, sauf indication contraire.
+Si vous préférez une autre organisation, merci d’indiquer votre disponibilité et de préciser, dans la partie « Commentaire », l’organisation souhaitée ainsi que vos jours de disponibilité lorsque cela est lié à une contrainte.</label>
+</div>
 <div class="block">
     <h2>Référent Professionnel <input type="checkbox"></h2>
     <table>
@@ -153,18 +161,10 @@
             <tr>
                 <td colspan="6" class="section-title">Obligatoire</td>
             </tr>
-            <tr>
-                <th style="width:10%;">Date</th>
-                <th style="width:10%;">Séquence</th>
-                <th>Intitulé ( Horaires )</th>
-                <th style="width:10%;" class="centered">Durée</th>
-                <th style="width:10%;" class="centered">Disponibilité</th>
-                <th style="width:15%;">Commentaire</th>
-            </tr>
         </thead>
         <tbody>
             <tr>
-                <td><input type="text" placeholder="Date..."></td>
+                <td>06/01/2026</td>
                 <td>F0</td>
                 <td>Ouverture de la promotion</td>
                 <td class="centered">1</td>
@@ -172,7 +172,7 @@
                 <td><input type="text"></td>
             </tr>
             <tr>
-                <td><input type="text" placeholder="Date..."></td>
+                <td>07/01/2026</td>
                 <td>F1.1</td>
                 <td>Représentation du métier d'APM</td>
                 <td class="centered">1</td>
@@ -180,7 +180,7 @@
                 <td><input type="text"></td>
             </tr>
             <tr>
-                <td><input type="text" placeholder="Date..."></td>
+                <td>08/01/2026</td>
                 <td>F1.2</td>
                 <td>Déontologie</td>
                 <td class="centered">1</td>
@@ -188,18 +188,38 @@
                 <td><input type="text"></td>
             </tr>
              <tr>
-                <td rowspan="3"><input type="text" placeholder="Date..."></td>
-                <td rowspan="3">Mises en Situation</td>
+                <td>04/06/2026</td>
+                <td>Eval</td>
                 <td>MSP S1</td>
-                <td rowspan="3"></td>
-                <td rowspan="3" class="centered"><input type="checkbox"></td>
-                <td rowspan="3"><input type="text"></td>
+                <td class="centered">1</td>
+                <td class="centered"><input type="checkbox"></td>
+                <td><input type="text"></td>
             </tr>
             <tr>
+                <td>09/07/2026<br>
+                10/07/2026</td>
+                <td>Eval</td>
                 <td>MSP S3</td>
+                <td class="centered">2</td>
+                <td class="centered"><input type="checkbox"></td>
+                <td><input type="text"></td>
             </tr>
             <tr>
-                <td>MSP Intermédiaires et Finales</td>
+                <td>17/06/2026</td>
+                <td>Eval</td>
+                <td>MSP Intermediaires</td>
+                <td class="centered">1</td>
+                <td class="centered"><input type="checkbox"></td>
+                <td><input type="text"></td>
+            </tr>
+            <tr>
+                <td>28/09/206<br>
+                29/09/2026</td>
+                <td>Eval</td>
+                <td>MSP Finales</td>
+                <td class="centered">1</td>
+                <td class="centered"><input type="checkbox"></td>
+                <td><input type="text"></td>
             </tr>
         </tbody>
         <thead>
@@ -209,7 +229,8 @@
         </thead>
         <tbody class="facultatif-body">
             <tr>
-                <td><input type="text" placeholder="Date..."></td>
+                <td>03/02/2026<br>
+                04/02/2026</td>
                 <td>S1.1</td>
                 <td>Renseigner sur la VP et au Poste</td>
                 <td class="centered">2</td>
@@ -217,7 +238,8 @@
                 <td><input type="text"></td>
             </tr>
             <tr>
-                <td><input type="text" placeholder="Date..."></td>
+                <td>26/02/22026<br>
+                27/02/2026</td>
                 <td>S1.2</td>
                 <td>Communication avec public spécifique</td>
                 <td class="centered">2</td>
@@ -225,7 +247,9 @@
                 <td><input type="text"></td>
             </tr>
             <tr>
-                <td><input type="text" placeholder="Date..."></td>
+                <td>30/03/2026<br>
+                31/03/2026<br>
+                01/04/2026</td>
                 <td>S1.3</td>
                 <td>Assister une personne en difficulté</td>
                 <td class="centered">3</td>
@@ -233,7 +257,8 @@
                 <td><input type="text"></td>
             </tr>
             <tr>
-                <td><input type="text" placeholder="Date..."></td>
+                <td>17/03/2026<br>
+                18/03/2026</td>
                 <td>S1.4</td>
                 <td>Gérer une situation conflictuelle</td>
                 <td class="centered">2</td>
@@ -251,18 +276,26 @@
             <tr>
                 <td colspan="6" class="section-title">Obligatoire</td>
             </tr>
-            <tr>
-                <th style="width:10%;">Date</th>
-                <th style="width:10%;">Séquence</th>
-                <th>Intitulé</th>
-                <th style="width:10%;" class="centered">Durée</th>
-                <th style="width:10%;" class="centered">Disponibilité</th>
-                <th style="width:15%;">Commentaire</th>
-            </tr>
         </thead>
         <tbody>
             <tr>
-                <td><input type="text" placeholder="Date..."></td>
+                <td>06/01/2026</td>
+                <td>F0</td>
+                <td>Ouverture de la promotion</td>
+                <td class="centered">1</td>
+                <td class="centered"><input type="checkbox"></td>
+                <td><input type="text"></td>
+            </tr>
+            <tr>
+                <td>07/01/2026</td>
+                <td>F1.1</td>
+                <td>Représentation du métier d'APM</td>
+                <td class="centered">1</td>
+                <td class="centered"><input type="checkbox"></td>
+                <td><input type="text"></td>
+            </tr>
+            <tr>
+                <td>19/01/2026</td>
                 <td>F1.3</td>
                 <td>Communication</td>
                 <td class="centered">1</td>
@@ -270,7 +303,7 @@
                 <td><input type="text"></td>
             </tr>
             <tr>
-                <td><input type="text" placeholder="Date..."></td>
+                <td>20/01/2026</td>
                 <td>F1.4</td>
                 <td>Gestion des émotions</td>
                 <td class="centered">1</td>
@@ -278,7 +311,8 @@
                 <td><input type="text"></td>
             </tr>
             <tr>
-                <td><input type="text" placeholder="Date..."></td>
+                <td>26/02/2026<br>
+                27/02/2026</td>
                 <td>S1.2</td>
                 <td>Communication avec public spécifique (binôme PM)</td>
                 <td class="centered">2</td>
@@ -286,26 +320,47 @@
                 <td><input type="text"></td>
             </tr>
             <tr>
-                <td><input type="text" placeholder="Date..."></td>
+                <td>30/03/2026<br>
+                31/03/2026<br>
+                01/04/2026</td>
                 <td>S1.3</td>
                 <td>Assister une personne en difficulté (binôme PM)</td>
                 <td class="centered">3</td>
                 <td class="centered"><input type="checkbox"></td>
                 <td><input type="text"></td>
+            <tr>
+                <td>04/06/2026</td>
+                <td>Eval</td>
+                <td>MSP S1</td>
+                <td class="centered">1</td>
+                <td class="centered"><input type="checkbox"></td>
+                <td><input type="text"></td>
             </tr>
             <tr>
-                <td rowspan="3"><input type="text" placeholder="Date..."></td>
-                <td rowspan="3">Mises en Situation</td>
-                <td>MSP S1 (9h - 17h)</td>
-                <td rowspan="3" class="centered">4</td>
-                <td rowspan="3" class="centered"><input type="checkbox"></td>
-                <td rowspan="3"><input type="text"></td>
+                <td>09/07/2026<br>
+                10/07/2026</td>
+                <td>Eval</td>
+                <td>MSP S3</td>
+                <td class="centered">2</td>
+                <td class="centered"><input type="checkbox"></td>
+                <td><input type="text"></td>
             </tr>
             <tr>
-                <td>MSP S3 ( 9h - 17h + 8h30 - 12h)</td>
+                <td>17/06/2026</td>
+                <td>Eval</td>
+                <td>MSP Intermediaires</td>
+                <td class="centered">1</td>
+                <td class="centered"><input type="checkbox"></td>
+                <td><input type="text"></td>
             </tr>
             <tr>
-                <td>MSP Intermédiaires (9h - 17h) et Finales (13h - 18h + 9h - 17h)</td>
+                <td>28/09/206<br>
+                29/09/2026</td>
+                <td>Eval</td>
+                <td>MSP Finales</td>
+                <td class="centered">1</td>
+                <td class="centered"><input type="checkbox"></td>
+                <td><input type="text"></td>
             </tr>
         </tbody>
         <thead>
@@ -315,7 +370,8 @@
         </thead>
         <tbody class="facultatif-body">
             <tr>
-                <td><input type="text" placeholder="Date..."></td>
+                <td>03/02/2026<br>
+                04/02/2026</td>
                 <td>S1.1</td>
                 <td>Renseigner sur la VP et au Poste</td>
                 <td class="centered">2</td>
@@ -323,7 +379,8 @@
                 <td><input type="text"></td>
             </tr>
             <tr>
-                <td><input type="text" placeholder="Date..."></td>
+                <td>17/03/2026<br>
+                18/03/2026</td>
                 <td>S1.4</td>
                 <td>Gérer une situation conflictuelle</td>
                 <td class="centered">2</td>
@@ -342,18 +399,23 @@
             <tr>
                 <td colspan="6" class="section-title">Obligatoire</td>
             </tr>
-            <tr>
-                <th style="width:10%;">Date</th>
-                <th style="width:10%;">Séquence</th>
-                <th>Intitulé ( Horaires )</th>
-                <th style="width:10%;" class="centered">Durée</th>
-                <th style="width:10%;" class="centered">Disponibilité</th>
-                <th style="width:15%;">Commentaire</th>
-            </tr>
         </thead>
         <tbody>
             <tr>
-                <td><input type="text" placeholder="Date..."></td>
+                <td>09/01/2026<br>
+                21/01/2026<br>
+                02/02/2026<br>
+                16/02/2026<br>
+                23/02/2026<br>
+                24/02/2026<br>
+                19/03/2026<br>
+                20/03/2026<br>
+                20/04/2026<br>
+                21/04/2026<br>
+                05/06/2026<br>
+                12/06/2026<br>
+                15/06/2026<br>
+                16/06/2026</td>
                 <td>F4.3</td>
                 <td>GTPI</td>
                 <td class="centered">1</td>
@@ -361,28 +423,30 @@
                 <td><input type="text"></td>
             </tr>
             <tr>
-                <td><input type="text" placeholder="Date..."></td>
-                <td>Mises en Situation</td>
+                <td>09/07/2026<br>
+                10/07/2026</td>
+                <td>Eval</td>
                 <td>MSP S3</td>
+                <td class="centered">2</td>
+                <td class="centered"><input type="checkbox"></td>
+                <td><input type="text"></td>
+            </tr>
+            <tr>
+                <td>17/06/2026</td>
+                <td>Eval</td>
+                <td>MSP Intermediaires</td>
                 <td class="centered">1</td>
                 <td class="centered"><input type="checkbox"></td>
                 <td><input type="text"></td>
             </tr>
-             <tr>
-                <td rowspan="3"><input type="text" placeholder="Date..."></td>
-                <td rowspan="3">Mises en Situation</td>
-                <td>MSP Intermediaire</td>
-                <td rowspan="3"></td>
-                <td rowspan="3" class="centered"><input type="checkbox"></td>
-                <td rowspan="3"><input type="text"></td>
-            </tr>
-             <tr>
-                <td rowspan="3"><input type="text" placeholder="Date..."></td>
-                <td rowspan="3">Mises en Situation</td>
+            <tr>
+                <td>28/09/206<br>
+                29/09/2026</td>
+                <td>Eval</td>
                 <td>MSP Finales</td>
-                <td rowspan="3"></td>
-                <td rowspan="3" class="centered"><input type="checkbox"></td>
-                <td rowspan="3"><input type="text"></td>
+                <td class="centered">1</td>
+                <td class="centered"><input type="checkbox"></td>
+                <td><input type="text"></td>
             </tr>
         </tbody>
         <thead>
@@ -392,7 +456,7 @@
         </thead>
         <tbody class="facultatif-body">
             <tr>
-                <td><input type="text" placeholder="Date..."></td>
+                <td>Date</td>
                 <td>F4.1</td>
                 <td>Sport</td>
                 <td class="centered">2</td>
@@ -400,7 +464,7 @@
                 <td><input type="text"></td>
             </tr>
             <tr>
-                <td><input type="text" placeholder="Date..."></td>
+                <td>25/02/2026</td>
                 <td>F4.2</td>
                 <td>Moyen de Transmission</td>
                 <td class="centered">2</td>
@@ -416,71 +480,100 @@
     <table>
         <tbody>
             <tr>
-                <td><input type="text" placeholder="Date..."></td>
+                <td>12/01/2026</td>
                 <td>F2.1</td>
-                <td>GTPI</td>
+                <td>DISTANCIEL (journée)<br>
+                Appréhender l'organisation administrative de la France</td>
                 <td class="centered">1</td>
                 <td class="centered"><input type="checkbox"></td>
                 <td><input type="text"></td>
             </tr>
             <tr>
-                <td><input type="text" placeholder="Date..."></td>
+                <td>13/01/2026<br>
+                14/01/2026</td>
                 <td>F2.2</td>
-                <td>Organisation administrative et juridictionnellle française</td>
+                <td>DISTANCIEL (2 demi journées)<br>
+                Organisation administrative et juridictionnellle française</td>
                 <td class="centered">1</td>
                 <td class="centered"><input type="checkbox"></td>
                 <td><input type="text"></td>
             </tr>
             <tr>
-                <td><input type="text" placeholder="Date..."></td>
+                <td>15/01/2026<br>
+                16/01/2026</td>
                 <td>F2.3</td>
-                <td>Statut du PM</td>
+                <td>DISTANCIEL (2 demi-journées)<br>
+                Statut du PM</td>
                 <td class="centered">1</td>
                 <td class="centered"><input type="checkbox"></td>
                 <td><input type="text"></td>
             </tr>
             <tr>
-                <td><input type="text" placeholder="Date..."></td>
+                <td>26/01/2026<br>
+                27/01/2026<br>
+                28/01/2026<br>
+                29/01/2026</td>
                 <td>F3.1</td>
-                <td>Les textes régissant les prérogatives du PM</td>
+                <td>DISTANCIEL (4 demi-journées)<br>
+                Les textes régissant les prérogatives du PM</td>
                 <td class="centered">1</td>
                 <td class="centered"><input type="checkbox"></td>
                 <td><input type="text"></td>
             </tr>
             <tr>
-                <td><input type="text" placeholder="Date..."></td>
+                <td>30/01/2026<br>
+                09/202/2026<br>
+                10/02/2026<br>
+                11/02/2026<br>
+                12/02/2026<br>
+                13/02/2026<br>
+                19/02/2026<br>
+                20/02/2026</td>
                 <td>F3.2</td>
-                <td>Droit Pénal et Code de Procédure Pénale</td>
-                <td class="centered">1</td>
+                <td>DISTANCIEL (6 demi-journées)<br>
+                PRESENTIEL (2 journées)<br>
+                Droit Pénal et Code de Procédure Pénale</td>
+                <td class="centered">6</td>
                 <td class="centered"><input type="checkbox"></td>
                 <td><input type="text"></td>
             </tr>
             <tr>
-                <td><input type="text" placeholder="Date..."></td>
+                <td>22/01/2026<br>
+                05/02/2026<br>
+                06/02/2026<br>
+                09/03/2026<br>
+                10/03/2026</td>
                 <td>F3.3</td>
                 <td>Les écrits Professionnel</td>
-                <td class="centered">1</td>
+                <td class="centered">5</td>
                 <td class="centered"><input type="checkbox"></td>
                 <td><input type="text"></td>
             </tr>
             <tr>
-                <td><input type="text" placeholder="Date..."></td>
+                <td>15/09/2026<br>
+                16/09/2026<br>
+                23/09/2026</td>
                 <td>F3.4</td>
-                <td>Les infractions liées au bruit de voisinage</td>
-                <td class="centered">1</td>
+                <td>DISTANCIEL (2 journées)<br>
+                PRESENTIEL (1 journée)<br>
+                Les infractions liées au bruit de voisinage</td>
+                <td class="centered">3</td>
                 <td class="centered"><input type="checkbox"></td>
                 <td><input type="text"></td>
             </tr>
             <tr>
-                <td><input type="text" placeholder="Date..."></td>
+                <td>14/09/2026<br>
+                22/09/2026</td>
                 <td>F3.5</td>
-                <td>Module juridique préalable à l'armement</td>
+                <td>DISTANCIEL (1 demi-journée)<br>
+                PRESENTIEL (1 journée)<br>
+                Module juridique préalable à l'armement</td>
                 <td class="centered">1</td>
                 <td class="centered"><input type="checkbox"></td>
                 <td><input type="text"></td>
             </tr>
             <tr>
-                <td><input type="text" placeholder="Date..."></td>
+                <td>Date</td>
                 <td>F4.1</td>
                 <td>Sport</td>
                 <td class="centered">1</td>
@@ -488,7 +581,7 @@
                 <td><input type="text"></td>
             </tr>
             <tr>
-                <td><input type="text" placeholder="Date..."></td>
+                <td>25/02/2026</td>
                 <td>F4.2</td>
                 <td>Les moyens de transmission</td>
                 <td class="centered">1</td>
@@ -496,7 +589,8 @@
                 <td><input type="text"></td>
             </tr>
             <tr>
-                <td><input type="text" placeholder="Date..."></td>
+                <td>17/02/2026<br>
+                18/02/2026</td>
                 <td>F4.4</td>
                 <td>SST</td>
                 <td class="centered">1</td>
@@ -512,7 +606,8 @@
     <table>
         <tbody>
             <tr>
-                <td><input type="text" placeholder="Date..."></td>
+                <td>03/02/2026<br>
+                04/02/2026</td>
                 <td>S1.1</td>
                 <td>Accueillir et renseigner au poste et sur la VP</td>
                 <td class="centered">2</td>
@@ -520,39 +615,45 @@
                 <td><input type="text"></td>
             </tr>
             <tr>
-                <td><input type="text" placeholder="Date..."></td>
+                <td>26/02/2026<br>
+                27/02/2026</td>
                 <td>S2.2</td>
                 <td>Communication avec les publics spécifiques</td>
-                <td class="centered">1</td>
+                <td class="centered">2</td>
                 <td class="centered"><input type="checkbox"></td>
                 <td><input type="text"></td>
             </tr>
             <tr>
-                <td><input type="text" placeholder="Date..."></td>
+                <td>30/03/2026<br>
+                31/03/2026<br>
+                01/04/2026</td>
                 <td>S2.3</td>
                 <td>Assister une personne en difficulté</td>
-                <td class="centered">1</td>
+                <td class="centered">3</td>
                 <td class="centered"><input type="checkbox"></td>
                 <td><input type="text"></td>
             </tr>
             <tr>
-                <td><input type="text" placeholder="Date..."></td>
+                <td>17/03/2026<br>
+                18/03/2026</td>
                 <td>S1.4</td>
                 <td>Intervenir sur une situation conflictuelle</td>
-                <td class="centered">1</td>
+                <td class="centered">2</td>
                 <td class="centered"><input type="checkbox"></td>
                 <td><input type="text"></td>
             </tr>
             <tr>
-                <td><input type="text" placeholder="Date..."></td>
+                <td>01/06/2026<br>
+                02/06/2026<br>
+                03/06/2026</td>
                 <td>S1.5</td>
                 <td>Intervenir en situation de crise ou d'urgence</td>
-                <td class="centered">1</td>
+                <td class="centered">3</td>
                 <td class="centered"><input type="checkbox"></td>
                 <td><input type="text"></td>
             </tr>
             <tr>
-                <td><input type="text" placeholder="Date..."></td>
+                <td>10/06/2026</td>
                 <td>S2.1</td>
                 <td>Les règles de fonctionnement d'un poste de police</td>
                 <td class="centered">1</td>
@@ -560,7 +661,7 @@
                 <td><input type="text"></td>
             </tr>
             <tr>
-                <td><input type="text" placeholder="Date..."></td>
+                <td>11/06/2026</td>
                 <td>S2.2</td>
                 <td>Maintenir en état les moyens individuels et collectifs</td>
                 <td class="centered">1</td>
@@ -568,7 +669,8 @@
                 <td><input type="text"></td>
             </tr>
             <tr>
-                <td><input type="text" placeholder="Date..."></td>
+                <td>06/07/2026<br>
+                07/06/2026</td>
                 <td>S2.3</td>
                 <td>Maintenir ses compétences professionnelles</td>
                 <td class="centered">1</td>
@@ -576,23 +678,40 @@
                 <td><input type="text"></td>
             </tr>
             <tr>
-                <td><input type="text" placeholder="Date..."></td>
+                <td>11/03/2026<br>
+                12/03/2026<br>
+                13/03/2026</td>
                 <td>S3.1</td>
                 <td>Initier une procédure judiciaire</td>
-                <td class="centered">1</td>
+                <td class="centered">3</td>
                 <td class="centered"><input type="checkbox"></td>
                 <td><input type="text"></td>
             </tr>
             <tr>
-                <td><input type="text" placeholder="Date..."></td>
+                <td>02/04/2026<br>
+                03/04/2026<br>
+                23/04/2026<br>
+                24/04/2026<br>
+                08/06/2026<br>
+                09/06/2026<br>
+                </td>
                 <td>S3.2</td>
                 <td>La réglementation relative au Code de la Route</td>
+                <td class="centered">6</td>
+                <td class="centered"><input type="checkbox"></td>
+                <td><input type="text"></td>
+            </tr>
+            <tr>
+                <td>17/06/2026</td>
+                <td>Eval</td>
+                <td>CODE ROUTE MSP</td>
                 <td class="centered">1</td>
                 <td class="centered"><input type="checkbox"></td>
                 <td><input type="text"></td>
             </tr>
             <tr>
-                <td><input type="text" placeholder="Date..."></td>
+                <td>29/06/2026<br>
+                30/06/2026</td>
                 <td>S3.3.1</td>
                 <td>Les pouvoirs de police du maire</td>
                 <td class="centered">2</td>
@@ -600,7 +719,7 @@
                 <td><input type="text"></td>
             </tr>
             <tr>
-                <td><input type="text" placeholder="Date..."></td>
+                <td>18/06/2026</td>
                 <td>S3.3.2</td>
                 <td>Occupation du domaine public</td>
                 <td class="centered">2</td>
@@ -608,7 +727,7 @@
                 <td><input type="text"></td>
             </tr>
             <tr>
-                <td><input type="text" placeholder="Date..."></td>
+                <td>01/07/2026</td>
                 <td>S3.3.3</td>
                 <td>Urbanisme et Publicité</td>
                 <td class="centered">1</td>
@@ -616,7 +735,7 @@
                 <td><input type="text"></td>
             </tr>
             <tr>
-                <td><input type="text" placeholder="Date..."></td>
+                <td>08/07/2026</td>
                 <td>S3.3.4</td>
                 <td>Environnement</td>
                 <td class="centered">1</td>
@@ -624,7 +743,7 @@
                 <td><input type="text"></td>
             </tr>
             <tr>
-                <td><input type="text" placeholder="Date..."></td>
+                <td>02/07/2026</td>
                 <td>S3.3.5</td>
                 <td>Réglementation Animale</td>
                 <td class="centered">1</td>
@@ -632,7 +751,7 @@
                 <td><input type="text"></td>
             </tr>
             <tr>
-                <td><input type="text" placeholder="Date..."></td>
+                <td>03/07/2026</td>
                 <td>S3.3.1</td>
                 <td>Funéraire</td>
                 <td class="centered">0,5</td>
@@ -640,7 +759,9 @@
                 <td><input type="text"></td>
             </tr>
             <tr>
-                <td><input type="text" placeholder="Date..."></td>
+                <td>07/09/2026<br>
+                08/09/2026<br>
+                09/09/2026</td>
                 <td>S4.1</td>
                 <td>Prévention et surveillance du domaine public</td>
                 <td class="centered">3</td>
@@ -648,7 +769,8 @@
                 <td><input type="text"></td>
             </tr>
             <tr>
-                <td><input type="text" placeholder="Date..."></td>
+                <td>10/09/2026<br>
+                11/09/2026</td>
                 <td>S4.2</td>
                 <td>Participer et assurer le bon déroulement des cérémonies et manifestations</td>
                 <td class="centered">2</td>
@@ -658,87 +780,5 @@
         </tbody>
     </table>
 </div>
-<button class="btn-submit" id="submitBtn">Enregistrer</button>
-
-<script>
-  const EDGE_FUNCTION_URL = "https://oqmjdgarmczlikobnysa.supabase.co/functions/v1/sollicitation"; 
-  // remplace <ton-projet> par ton id Supabase
-
-  document.getElementById("submitBtn").addEventListener("click", async () => {
-    const nom = document.getElementById("nom").value.trim();
-    const prenom = document.getElementById("prenom").value.trim();
-    const fi = document.querySelector(".subtitle").innerText.trim(); // FI affiché en haut de la page
-
-    if (!nom || !prenom || !fi) {
-      alert("Merci de renseigner le nom, le prénom et la FI");
-      return;
-    }
-
-    // Récupérer toutes les lignes de tableaux
-    const rows = document.querySelectorAll("table tbody tr");
-
-    // Construire les objets à envoyer
-    let allData = [];
-    rows.forEach(row => {
-      const cells = row.querySelectorAll("td");
-
-      if (cells.length >= 6) {
-        const date = cells[0].querySelector("input")?.value || null;
-        const sequence = cells[1]?.innerText || cells[1]?.querySelector("input")?.value || null;
-        const intitule = cells[2]?.innerText || cells[2]?.querySelector("input")?.value || null;
-        const duree = cells[3]?.innerText || cells[3]?.querySelector("input")?.value || null;
-        const dispo = cells[4].querySelector("input[type=checkbox]")?.checked || false; // Toujours un booléen
-        const com = cells[5].querySelector("input")?.value || null;
-
-        // Ne rien enregistrer si ligne complètement vide
-        if (date || intitule || com || dispo) {
-          allData.push({
-            fi,
-            nom,
-            prenom,
-            date,
-            sequence,
-            intitule,
-            duree,
-            dispo,
-            com
-          });
-        }
-      }
-    });
-
-    if (allData.length === 0) {
-      alert("Aucune donnée à enregistrer");
-      return;
-    }
-
-    // Envoi à la fonction edge
-    let force = false;
-    let response = await fetch(EDGE_FUNCTION_URL, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ ...allData[0], force }) // on envoie la première pour vérifier doublon
-    });
-    let result = await response.json();
-
-    if (result.duplicate) {
-      if (confirm(result.message)) {
-        force = true;
-      } else {
-        return;
-      }
-    }
-
-    // Envoi de toutes les lignes (avec force si nécessaire)
-    for (let rowData of allData) {
-      await fetch(EDGE_FUNCTION_URL, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...rowData, force })
-      });
-    }
-
-    alert("Vos choix ont été enregistrés !");
-  });
-</script>
 </body>
+</html>
