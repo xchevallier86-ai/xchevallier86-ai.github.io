@@ -134,7 +134,7 @@
 
 <div class="container">
   <h1>Sollicitations</h1>
-  <h1>FI APM 57</h1>
+  <h1> id="fi">FI APM 57</h1>
   </div>
     
   <div class="form-info">
@@ -573,7 +573,7 @@ Si vous préférez une autre organisation, merci d’indiquer votre disponibilit
                 <td><input type="text"></td>
             </tr>
             <tr>
-                <td>Date</td>
+                <td>NC</td>
                 <td>F4.1</td>
                 <td>Sport</td>
                 <td class="centered">1</td>
@@ -780,5 +780,59 @@ Si vous préférez une autre organisation, merci d’indiquer votre disponibilit
         </tbody>
     </table>
 </div>
+  <button class="btn-submit" onclick="envoyerFormulaire()">Enregistrer</button>
+
+<script>
+async function envoyerFormulaire() {
+  const nom = document.getElementById("nom").value.trim();
+  const prenom = document.getElementById("prenom").value.trim();
+  const fi = document.getElementById("fi").innerText.trim();
+
+  // Fonction pour envoyer toutes les lignes
+  async function envoyerLignes(force = false) {
+    const rows = document.querySelectorAll("table tbody tr");
+    for (const row of rows) {
+      const cells = row.querySelectorAll("td");
+      if (cells.length < 6) continue;
+
+      const date = cells[0].innerText.trim();
+      const sequence = cells[1].innerText.trim();
+      const intitule = cells[2].innerText.trim();
+      const duree = parseFloat(cells[3].innerText.trim());
+      const dispo = cells[4].querySelector("input[type=checkbox]").checked;
+      const com = cells[5].querySelector("input[type=text]").value.trim();
+
+      const res = await fetch("https://oqmjdgarmczlikobnysa.supabase.co/functions/v1/sollicitation", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ fi, nom, prenom, date, sequence, intitule, duree, dispo, com, force })
+      });
+
+      const data = await res.json();
+
+      // Gestion retour API
+      if (data.duplicate) {
+        const continuer = confirm(data.message);
+        if (continuer) {
+          return envoyerLignes(true); // relancer avec force=true
+        } else {
+          alert("Aucune donnée enregistrée.");
+          return;
+        }
+      }
+
+      if (!data.success && data.error) {
+        console.error("Erreur :", data.error);
+        alert("Erreur lors de l’enregistrement !");
+        return;
+      }
+    }
+    alert("Enregistrement terminé !");
+  }
+
+  // Premier envoi (force = false)
+  envoyerLignes(false);
+}
+</script>
 </body>
 </html>
