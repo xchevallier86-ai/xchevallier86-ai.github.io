@@ -783,56 +783,98 @@ Si vous préférez une autre organisation, merci d’indiquer votre disponibilit
   <button class="btn-submit" onclick="envoyerFormulaire()">Enregistrer</button>
 
 <script>
-async function envoyerFormulaire() {
-  const nom = document.getElementById("nom").value.trim();
-  const prenom = document.getElementById("prenom").value.trim();
-  const fi = document.getElementById("fi").innerText.trim();
+    document.getElementById("saveBtn").addEventListener("click", async () => {
+      const table = document.getElementById("data-table");
+      const rows = [];
 
-  // Fonction pour envoyer toutes les lignes
-  async function envoyerLignes(force = false) {
-    const rows = document.querySelectorAll("table tbody tr");
-    for (const row of rows) {
-      const cells = row.querySelectorAll("td");
-      if (cells.length < 6) continue;
+      // ⚙️ Variables formateur (normalement récupérées dynamiquement ailleurs)
+      const fi = document.getElementById("fi").value.trim();
+      const nom = document.getElementById("nom").value.trim();
+      const prenom = document.getElementById("prenom").value.trim();
 
-      const date = cells[0].innerText.trim();
-      const sequence = cells[1].innerText.trim();
-      const intitule = cells[2].innerText.trim();
-      const duree = parseFloat(cells[3].innerText.trim());
-      const dispo = cells[4].querySelector("input[type=checkbox]").checked;
-      const com = cells[5].querySelector("input[type=text]").value.trim();
+      for (let i = 1; i < table.rows.length; i++) {
+        const cells = table.rows[i].cells;
 
-      const res = await fetch("https://oqmjdgarmczlikobnysa.supabase.co/functions/v1/sollicitation", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ fi, nom, prenom, date, sequence, intitule, duree, dispo, com, force })
-      });
+        // Récupération des dates (séparées par <br>)
+        const dates = cells[0].innerHTML
+          .split("<br>")
+          .map(d => d.trim())
+          .filter(d => d && d !== "NC");
 
-      const data = await res.json();
+        const sequence = cells[1].innerText.trim();
+        const intitule = cells[2].innerText.trim();
+        const duree = parseInt(cells[3].innerText.trim()) || null;
+        const dispo = cells[4].querySelector("input").checked;
+        const com = cells[5].querySelector("input").value.trim();
 
-      // Gestion retour API
-      if (data.duplicate) {
-        const continuer = confirm(data.message);
-        if (continuer) {
-          return envoyerLignes(true); // relancer avec force=true
-        } else {
-          alert("Aucune donnée enregistrée.");
-          return;
+        // Une ligne par date
+        for (const d of dates) {
+          const [day, month, year] = d.split("/");
+          const isoDate = `${year}-${month}-${day}`; // format YYYY-MM-DD
+
+          rows.push({
+            fi,
+            nom,
+            prenom,
+            date: isoDate,
+            sequence,
+            intitule,
+            duree,
+            dispo,
+            com
+          });
         }
       }
 
-      if (!data.success && data.error) {
-        console.error("Erreur :", data.error);
-        alert("Erreur lors de l’enregistrement !");
+      if (rows.length === 0) {
+        alert("Aucune donnée à enregistrer.");
         return;
       }
-    }
-    alert("Enregistrement terminé !");
-  }
 
-  // Premier envoi (force = false)
-  envoyerLignes(false);
-}
-</script>
+      // Préparation du payload
+      const payload = {
+        fi,
+        nom,
+        prenom,
+        force: false, // passe à true si tu veux écraser les doublons
+        rows
+      };
+
+      try {
+        const response = await fetch(https://oqmjdgarmczlikobnysa.supabase.co/functions/v1/sollicitation", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload),
+        });
+
+        const data = await response.json();
+
+        if (data.duplicate) {
+          if (confirm(data.message)) {
+            payload.force = true;
+            const retry = await fetch("https://oqmjdgarmczlikobnysa.supabase.co/functions/v1/sollicitation", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify(payload),
+            });
+            const retryData = await retry.json();
+            alert("Données enregistrées (remplacement).");
+            console.log(retryData);
+          } else {
+            alert("Enregistrement annulé.");
+          }
+        } else if (data.success) {
+          alert("Données enregistrées avec succès !");
+          console.log(data);
+        } else if (data.error) {
+          alert("Erreur : " + data.error);
+          console.error(data);
+        }
+      } catch (e) {
+        alert("Erreur lors de l'envoi : " + e.message);
+        console.error(e);
+      }
+    });
+  </script>
 </body>
 </html>
