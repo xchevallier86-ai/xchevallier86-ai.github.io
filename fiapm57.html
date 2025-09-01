@@ -134,7 +134,7 @@
 
 <div class="container">
   <h1>Sollicitations</h1>
-  <h2 id="fi">FI APM 57</h2>
+  <h1>FI APM 57</h1>
   </div>
     
   <div class="form-info">
@@ -156,7 +156,7 @@ Si vous préférez une autre organisation, merci d’indiquer votre disponibilit
 </div>
 <div class="block">
     <h2>Référent Professionnel <input type="checkbox"></h2>
-    <table>
+    <table class="sollicitation-table">
         <thead>
             <tr>
                 <td colspan="6" class="section-title">Obligatoire</td>
@@ -271,7 +271,7 @@ Si vous préférez une autre organisation, merci d’indiquer votre disponibilit
 
 <div class="block">
     <h2>Référent Relationnel <input type="checkbox"></h2>
-    <table>
+    <table class="solliciation-table">
         <thead>
             <tr>
                 <td colspan="6" class="section-title">Obligatoire</td>
@@ -394,7 +394,7 @@ Si vous préférez une autre organisation, merci d’indiquer votre disponibilit
 
 <div class="block">
     <h2>Référent Technique <input type="checkbox"></h2>
-    <table>
+    <table class="sollicitation-table">
         <thead>
             <tr>
                 <td colspan="6" class="section-title">Obligatoire</td>
@@ -477,7 +477,7 @@ Si vous préférez une autre organisation, merci d’indiquer votre disponibilit
 
 <div class="block">
     <h2>Fondamentaux</h2>
-    <table>
+    <table class="sollicitation-table">
         <tbody>
             <tr>
                 <td>12/01/2026</td>
@@ -573,7 +573,7 @@ Si vous préférez une autre organisation, merci d’indiquer votre disponibilit
                 <td><input type="text"></td>
             </tr>
             <tr>
-                <td>NC</td>
+                <td>Date</td>
                 <td>F4.1</td>
                 <td>Sport</td>
                 <td class="centered">1</td>
@@ -603,7 +603,7 @@ Si vous préférez une autre organisation, merci d’indiquer votre disponibilit
 
 <div class="block">
     <h2>Situations</h2>
-    <table>
+    <table class="sollicitation-table">
         <tbody>
             <tr>
                 <td>03/02/2026<br>
@@ -781,100 +781,151 @@ Si vous préférez une autre organisation, merci d’indiquer votre disponibilit
     </table>
 </div>
   <button class="btn-submit" onclick="envoyerFormulaire()">Enregistrer</button>
+  <script>
+async function envoyerFormulaire() {
+  const nom = document.getElementById("nom").value.trim();
+  const prenom = document.getElementById("prenom").value.trim();
+  const fi = document.getElementById("fi").innerText.trim();
 
-<script>
-    document.getElementById("saveBtn").addEventListener("click", async () => {
-      const table = document.getElementById("data-table");
-      const rows = [];
+  if (!nom || !prenom || !fi) {
+    alert("Merci de renseigner le Nom, le Prénom et vérifier l'intitulé FI.");
+    return;
+  }
 
-      // ⚙️ Variables formateur (normalement récupérées dynamiquement ailleurs)
-      const fi = document.getElementById("fi").value.trim();
-      const nom = document.getElementById("nom").value.trim();
-      const prenom = document.getElementById("prenom").value.trim();
+  // --- Utilitaires ---
+  // Convertit "dd/mm/yyyy" -> "yyyy-mm-dd" ; ignore "NC" et formats incorrects
+  function toISODate(fr) {
+    if (!fr) return null;
+    const s = fr.trim();
+    if (!s || /^NC$/i.test(s)) return null;
 
-      for (let i = 1; i < table.rows.length; i++) {
-        const cells = table.rows[i].cells;
+    // On ne garde que des chiffres et des "/" (sécurise contre les espaces/br)
+    const cleaned = s.replace(/[^\d/]/g, "");
+    const m = cleaned.match(/^(\d{1,2})\s*\/\s*(\d{1,2})\s*\/\s*(\d{2,4})$/);
+    if (!m) return null;
 
-        // Récupération des dates (séparées par <br>)
-        const dates = cells[0].innerHTML
-          .split("<br>")
-          .map(d => d.trim())
-          .filter(d => d && d !== "NC");
+    let [ , d, mo, y ] = m;
+    // Normalisation année : 2 chiffres => 20xx ; autre que 4 chiffres => rejet
+    if (y.length === 2) y = "20" + y;
+    if (y.length !== 4) return null;
 
-        const sequence = cells[1].innerText.trim();
-        const intitule = cells[2].innerText.trim();
-        const duree = parseInt(cells[3].innerText.trim()) || null;
-        const dispo = cells[4].querySelector("input").checked;
-        const com = cells[5].querySelector("input").value.trim();
+    const dd  = String(parseInt(d, 10)).padStart(2, "0");
+    const mm  = String(parseInt(mo, 10)).padStart(2, "0");
+    const yyyy = y;
 
-        // Une ligne par date
-        for (const d of dates) {
-          const [day, month, year] = d.split("/");
-          const isoDate = `${year}-${month}-${day}`; // format YYYY-MM-DD
+    // validation simple du mois/jour
+    const mi = parseInt(mm, 10);
+    const di = parseInt(dd, 10);
+    if (mi < 1 || mi > 12 || di < 1 || di > 31) return null;
 
-          rows.push({
-            fi,
-            nom,
-            prenom,
-            date: isoDate,
-            sequence,
-            intitule,
-            duree,
-            dispo,
-            com
-          });
-        }
+    return `${yyyy}-${mm}-${dd}`;
+  }
+
+  // Convertit la durée affichée en entier (smallint en BDD).
+  // "0,5" => 1 (arrondi), "3" => 3, sinon null.
+  function parseDureeInt(text) {
+    if (!text) return null;
+    const n = parseFloat(String(text).replace(",", "."));
+    if (!Number.isFinite(n)) return null;
+    return Math.round(n); // BDD attend un entier
+  }
+
+  // --- Collecte des lignes sur TOUTES les tables des blocs ---
+  const rows = [];
+  const datesIgnorees = [];
+
+  // cible les 5 tables de tes sections
+  const allRows = document.querySelectorAll(".block table tbody tr");
+
+  for (const row of allRows) {
+    const cells = row.querySelectorAll("td");
+    if (cells.length < 6) continue;
+
+    // 0: date(s) (peut contenir plusieurs dates avec <br>)
+    // 1: séquence, 2: intitulé, 3: durée, 4: dispo (checkbox), 5: com (input)
+    const dateHTML = cells[0].innerHTML || "";
+    // découpe robuste sur <br> ou <br/> (insensible à la casse, espaces)
+    const dateParts = dateHTML
+      .split(/<br\s*\/?>/i)
+      .map(s => s.replace(/\n/g, "").trim())
+      .filter(s => s.length > 0);
+
+    const sequence = (cells[1].innerText || "").trim() || null;
+    const intitule = (cells[2].innerText || "").trim() || null;
+    const duree = parseDureeInt((cells[3].innerText || "").trim());
+    const dispoEl = cells[4].querySelector("input[type=checkbox]");
+    const comEl = cells[5].querySelector("input[type=text]");
+    const dispo = dispoEl ? !!dispoEl.checked : null;
+    const com = comEl ? (comEl.value || "").trim() || null : null;
+
+    // Une ligne par date valide
+    if (dateParts.length === 0) {
+      // pas de date => rien à insérer pour cette ligne
+      continue;
+    }
+
+    for (const dp of dateParts) {
+      const iso = toISODate(dp);
+      if (!iso) {
+        datesIgnorees.push(dp);
+        continue;
       }
+      rows.push({ fi, nom, prenom, date: iso, sequence, intitule, duree, dispo, com });
+    }
+  }
 
-      if (rows.length === 0) {
-        alert("Aucune donnée à enregistrer.");
+  if (rows.length === 0) {
+    let msg = "Aucune ligne valide à enregistrer.";
+    if (datesIgnorees.length) {
+      msg += "\nDates ignorées (format invalide/NC) : " + datesIgnorees.join(", ");
+    }
+    alert(msg);
+    return;
+  }
+
+  // --- Envoi à l'Edge Function (payload groupé) ---
+  const endpoint = "https://oqmjdgarmczlikobnysa.supabase.co/functions/v1/sollicitation";
+  const payload = { fi, nom, prenom, force: false, rows };
+
+  try {
+    let res = await fetch(endpoint, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload)
+    });
+    let data = await res.json();
+
+    if (data.duplicate) {
+      const ok = confirm(data.message || "Des données existent déjà pour ce formateur. Remplacer ?");
+      if (!ok) {
+        alert("Enregistrement annulé.");
         return;
       }
+      // renvoi en force
+      payload.force = true;
+      res = await fetch(endpoint, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload)
+      });
+      data = await res.json();
+    }
 
-      // Préparation du payload
-      const payload = {
-        fi,
-        nom,
-        prenom,
-        force: false, // passe à true si tu veux écraser les doublons
-        rows
-      };
-
-      try {
-        const response = await fetch(https://oqmjdgarmczlikobnysa.supabase.co/functions/v1/sollicitation", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(payload),
-        });
-
-        const data = await response.json();
-
-        if (data.duplicate) {
-          if (confirm(data.message)) {
-            payload.force = true;
-            const retry = await fetch("https://oqmjdgarmczlikobnysa.supabase.co/functions/v1/sollicitation", {
-              method: "POST",
-              headers: { "Content-Type": "application/json" },
-              body: JSON.stringify(payload),
-            });
-            const retryData = await retry.json();
-            alert("Données enregistrées (remplacement).");
-            console.log(retryData);
-          } else {
-            alert("Enregistrement annulé.");
-          }
-        } else if (data.success) {
-          alert("Données enregistrées avec succès !");
-          console.log(data);
-        } else if (data.error) {
-          alert("Erreur : " + data.error);
-          console.error(data);
-        }
-      } catch (e) {
-        alert("Erreur lors de l'envoi : " + e.message);
-        console.error(e);
+    if (data && data.success) {
+      let msg = "Enregistrement terminé !";
+      if (datesIgnorees.length) {
+        msg += "\n(Attention : dates ignorées) " + datesIgnorees.join(", ");
       }
-    });
-  </script>
+      alert(msg);
+    } else {
+      alert("Erreur : " + (data?.error || "inconnue"));
+      console.error("Réponse serveur :", data);
+    }
+  } catch (e) {
+    alert("Erreur lors de l’enregistrement : " + e.message);
+    console.error(e);
+  }
+}
+</script>
 </body>
 </html>
