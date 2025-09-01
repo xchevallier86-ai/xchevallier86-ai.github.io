@@ -927,5 +927,81 @@ async function envoyerFormulaire() {
   }
 }
 </script>
+<script>
+(function(){
+  // renvoie les checkboxes des lignes "obligatoires" d'une table
+  function getObligatoryCheckboxes(table){
+    return Array.from(table.querySelectorAll('tbody input[type="checkbox"]')).filter(chk => {
+      const tb = chk.closest('tbody');
+      if (!tb) return false;
+      // ignore les sections marquées facultatif
+      if (tb.classList.contains('facultatif-body')) return false;
+      // s'assurer que c'est bien une checkbox de cellule (et non la checkbox du header)
+      return !!chk.closest('td');
+    });
+  }
+
+  // met à jour la checkbox du h2 du bloc selon l'état des checkboxes obligatoires
+  function updateHeaderCheckbox(block){
+    const headerChk = block.querySelector('h2 input[type="checkbox"]');
+    if (!headerChk) return;
+    const table = block.querySelector('table');
+    if (!table) return;
+
+    const oblig = getObligatoryCheckboxes(table);
+    if (oblig.length === 0) {
+      headerChk.checked = false;
+      headerChk.indeterminate = false;
+      return;
+    }
+    const checkedCount = oblig.filter(c => c.checked).length;
+
+    if (checkedCount === 0) {
+      headerChk.checked = false;
+      headerChk.indeterminate = false;
+    } else if (checkedCount === oblig.length) {
+      headerChk.checked = true;
+      headerChk.indeterminate = false;
+    } else {
+      headerChk.checked = false;
+      headerChk.indeterminate = true; // état partiel
+    }
+  }
+
+  // initialise un bloc : lie listeners sur les checkboxes et le header
+  function initBlock(block){
+    const table = block.querySelector('table');
+    const headerChk = block.querySelector('h2 input[type="checkbox"]');
+    if (!table || !headerChk) return;
+
+    const oblig = getObligatoryCheckboxes(table);
+    // listener sur chaque checkbox obligatoire
+    oblig.forEach(chk => {
+      chk.addEventListener('change', () => updateHeaderCheckbox(block));
+    });
+
+    // si on clique sur la checkbox du h2, (dé)cocher toutes les obligatoires
+    headerChk.addEventListener('change', () => {
+      const setTo = headerChk.checked;
+      oblig.forEach(chk => {
+        if (chk.checked !== setTo) {
+          chk.checked = setTo;
+          chk.dispatchEvent(new Event('change', { bubbles: true }));
+        }
+      });
+      headerChk.indeterminate = false;
+    });
+
+    // état initial
+    updateHeaderCheckbox(block);
+  }
+
+  // quand la page est chargée, on initialise tous les .block
+  document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.block').forEach(initBlock);
+  });
+})();
+</script>
+
 </body>
 </html>
